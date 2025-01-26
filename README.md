@@ -8,6 +8,7 @@ Features:
 
 
 How to Play:
+
     Run the script in any Python environment or Jupyter Notebook.
     Guess one letter at a time to figure out the hidden word.
     Each incorrect guess reduces your lives, and the Hangman graphic updates accordingly.
