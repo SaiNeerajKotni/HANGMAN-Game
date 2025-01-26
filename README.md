@@ -1,6 +1,7 @@
 # HANGMAN-Game
 A simple yet engaging text-based Hangman game written in Python. This project is designed for both beginners and those who enjoy word-guessing games.
 Features:
+
     Randomized word selection from a predefined word list.
     Dynamic display of the word being guessed, updated based on user input.
     Visual representation of remaining lives using ASCII art.
@@ -15,9 +16,12 @@ How to Play:
     Win by guessing all letters correctly or lose if you run out of lives.
 
 Technologies Used:
+
     Python (Core libraries: random)
     Jupyter Notebook
+    
 Future Improvements (optional):
+
     Add difficulty levels with larger word lists.
     Enable support for multi-player mode or player-defined words.
     Improve visuals using GUI libraries like Tkinter or Pygame.
