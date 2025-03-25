@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+// Hangman stages
+vector<string> stages = {
+    " +---+\n |   |\n     |\n     |\n     |\n     |\n=======",
+    " +---+\n |   |\n 0   |\n     |\n     |\n     |\n=======",
+    " +---+\n |   |\n 0   |\n |   |\n     |\n     |\n=======",
+    " +---+\n |   |\n 0   |\n/|   |\n     |\n     |\n=======",
+    " +---+\n |   |\n 0   |\n/|\\  |\n     |\n     |\n=======",
+    " +---+\n |   |\n 0   |\n/|\\  |\n/    |\n     |\n=======",
+    " +---+\n |   |\n 0   |\n/|\\  |\n/ \\  |\n     |\n======="
+};
+
+// Function to get a random word from the list
+string get_random_word() {
+    vector<string> word_list = {"camel", "india", "elephant", "dragon"};
+    srand(time(0));
+    return word_list[rand() % word_list.size()];
+}
+
+int main() {
+    string word = get_random_word(); // Select a random word
+    int lives = 6;
+    string display(word.length(), '_'); // Placeholder for guessed letters
+    vector<char> correct_letters; // To store correctly guessed letters
+    bool game_over = false;
+
+    cout << "Welcome to Hangman!\n";
+    cout << "Guess the word: " << string(word.length(), '_') << endl;
+
+    while (!game_over) {
+        char guess;
+        cout << "\nGuess a letter: ";
+        cin >> guess;
+
+        bool found = false;
+        for (size_t i = 0; i < word.length(); i++) {
+            if (word[i] == guess) {
+                display[i] = guess;
+                found = true;
+            }
+        }
+
+        if (!found) {
+            lives--;
+            cout << "Incorrect guess! Lives remaining: " << lives << endl;
+        }
+
+        cout << "Current word: " << display << endl;
+        cout << stages[6 - lives] << endl;
+
+        if (display == word) {
+            cout << "Congratulations! You won!" << endl;
+            game_over = true;
+        } else if (lives == 0) {
+            cout << "You lost! The word was: " << word << endl;
+            game_over = true;
+        }
+    }
+
+    return 0;
+}
